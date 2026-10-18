@@ -1,5 +1,8 @@
 # 🧠 Statistik für AI & ML-Engineers: Interaktiver Praxiskurs
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bohne159-code/ml-statistics-course/blob/main/ml_statistics_course.ipynb)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/bohne159-code/ml-statistics-course)
+
 Willkommen zum praxisorientierten Statistikkurs für angehende **AI- und Machine-Learning-Engineers**.
 Hier lernst du die mathematischen und statistischen Grundlagen nicht abstrakt auswendig, sondern programmierst die Kernkonzepte in Python nach und siehst unmittelbar, warum sie für modernes Deep Learning, Feature Engineering, Modell-Losses und Produktiv-Deployments unerlässlich sind.
 
