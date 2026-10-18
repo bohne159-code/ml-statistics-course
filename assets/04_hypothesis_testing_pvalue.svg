@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; text-anchor: middle; }
+      .curve { fill: none; stroke: #94a3b8; stroke-width: 2.5; }
+      .rejection { fill: #f43f5e; fill-opacity: 0.45; }
+      .observed { stroke: #38bdf8; stroke-width: 3; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Hypothesentests &amp; p-Wert: Entscheidungsgrenzen im A/B-Testing</text>
+  <text x="30" y="58" class="subtext">Wann ist der Performance-Zuwachs eines neuen ML-Modells echt oder nur Zufallsrauschen?</text>
+
+  <!-- Baseline Axis -->
+  <line x1="80" y1="240" x2="720" y2="240" stroke="#334155" stroke-width="2"/>
+
+  <!-- Left Rejection Tail (2.5%) -->
+  <path d="M 80 239 Q 140 239, 180 230 Q 200 220, 204 218 L 204 240 L 80 240 Z" class="rejection"/>
+  <!-- Right Rejection Tail (2.5%) -->
+  <path d="M 596 218 Q 600 220, 620 230 Q 660 239, 720 239 L 720 240 L 596 240 Z" class="rejection"/>
+
+  <!-- Bell Curve H0 -->
+  <path d="M 80 239 Q 200 239, 280 180 Q 350 120, 400 70 Q 450 120, 520 180 Q 600 239, 720 239" class="curve"/>
+
+  <!-- Critical Values lines -->
+  <line x1="204" y1="210" x2="204" y2="250" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3 3"/>
+  <line x1="596" y1="210" x2="596" y2="250" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="204" y="270" class="label" fill="#f43f5e">Z = -1.96</text>
+  <text x="596" y="270" class="label" fill="#f43f5e">Z = +1.96</text>
+
+  <!-- Center H0 -->
+  <line x1="400" y1="70" x2="400" y2="245" stroke="#475569" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="400" y="160" class="label" fill="#94a3b8" font-size="14px">H0: Kein Unterschied (Δ = 0)</text>
+  <text x="400" y="180" class="label" fill="#64748b" font-size="11px">Annahmebereich (95% Wahrscheinlichkeit)</text>
+  <text x="400" y="270" class="label">Z = 0.0</text>
+
+  <!-- Observed Z-Score from new Model (e.g. Z = 2.45) -->
+  <line x1="645" y1="120" x2="645" y2="240" class="observed"/>
+  <circle cx="645" cy="120" r="5" fill="#38bdf8"/>
+  <text x="645" y="105" class="label" fill="#38bdf8" font-weight="700">Beobachteter Z-Score (z.B. 2.45)</text>
+  <text x="645" y="290" class="label" fill="#38bdf8">p-Wert &lt; 0.05 ➔ H0 ablehnen!</text>
+
+  <!-- Legend / Explanation -->
+  <rect x="520" y="25" width="250" height="45" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="535" cy="40" r="5" fill="#f43f5e"/>
+  <text x="548" y="44" class="label" text-anchor="start" font-size="11px">Ablehnbereich (α = 5% Signifikanz)</text>
+  <circle cx="535" cy="58" r="5" fill="#38bdf8"/>
+  <text x="548" y="62" class="label" text-anchor="start" font-size="11px">Neues Modell B signifikant besser</text>
+</svg>

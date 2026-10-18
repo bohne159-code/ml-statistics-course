@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
+      .curve-entropy { fill: none; stroke: #38bdf8; stroke-width: 3.5; }
+      .peak-pt { fill: #f43f5e; stroke: #ffe4e6; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Shannon-Entropie H(P) &amp; Kullback-Leibler (KL) Divergenz</text>
+  <text x="30" y="58" class="subtext">Die mathematische Sprache von Decision Trees, Cross-Entropy Loss, VAEs und RLHF bei LLMs</text>
+
+  <!-- Left: Entropy Curve -->
+  <g transform="translate(50, 85)">
+    <text x="130" y="15" class="label" fill="#38bdf8" font-weight="700" text-anchor="middle">Shannon-Entropie H(p) [Bits]</text>
+    
+    <!-- Axes -->
+    <line x1="20" y1="180" x2="250" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="20" y1="180" x2="20" y2="35" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Ticks & Grid -->
+    <line x1="20" y1="50" x2="250" y2="50" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="10" y="54" class="subtext" text-anchor="end">1.0</text>
+    <text x="10" y="184" class="subtext" text-anchor="end">0.0</text>
+
+    <!-- Parabolic Entropy Curve -->
+    <path d="M 20 180 Q 70 80, 135 50 Q 200 80, 250 180" class="curve-entropy"/>
+    <circle cx="135" cy="50" r="6" class="peak-pt"/>
+    
+    <line x1="135" y1="50" x2="135" y2="180" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="135" y="198" class="label" fill="#f43f5e" text-anchor="middle">p = 0.5 (Max Unordnung = 1 Bit)</text>
+    <text x="20" y="198" class="subtext">p=0</text>
+    <text x="250" y="198" class="subtext">p=1</text>
+  </g>
+
+  <!-- Right: KL Divergence Concept Card -->
+  <g transform="translate(370, 95)">
+    <rect x="0" y="0" width="380" height="180" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="32" class="label" fill="#38bdf8" font-weight="700" font-size="14px">Fundamentale Beziehung:</text>
+    
+    <!-- Formula Box -->
+    <rect x="25" y="45" width="330" height="40" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="190" y="70" class="label" fill="#f8fafc" font-size="14px" font-weight="700" text-anchor="middle">H(P, Q) = H(P) + D_KL(P || Q)</text>
+    
+    <text x="25" y="112" class="label" font-size="11px">▶ <tspan font-weight="700">H(P, Q) (Cross-Entropy):</tspan> Verlustmaß für Klassifikation / LLMs</text>
+    <text x="25" y="132" class="label" font-size="11px">▶ <tspan font-weight="700">H(P) (Entropie der Daten):</tspan> Konstante Information der Ground Truth</text>
+    <text x="25" y="152" class="label" font-size="11px">▶ <tspan font-weight="700" fill="#10b981">D_KL(P || Q) (KL-Divergenz):</tspan> Abstand der Vorhersage Q von der Realität P</text>
+    <text x="25" y="172" class="subtext">Minimieren von Cross-Entropy minimiert direkt den Verteilungsabstand!</text>
+  </g>
+</svg>

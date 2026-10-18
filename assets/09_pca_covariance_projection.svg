@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
+      .pt { fill: #38bdf8; fill-opacity: 0.75; }
+      .pc1 { stroke: #10b981; stroke-width: 3.5; stroke-linecap: round; }
+      .pc2 { stroke: #f43f5e; stroke-width: 2.5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Hauptkomponentenanalyse (PCA) &amp; Kovarianzmatrix</text>
+  <text x="30" y="58" class="subtext">Dimensionsreduktion durch Finden der orthogonalen Richtungen maximaler Varianz (Eigenvektoren)</text>
+
+  <!-- Left: 2D Scatter with Eigenvectors -->
+  <g transform="translate(60, 90)">
+    <!-- Original Axes (Feature 1 & Feature 2) -->
+    <line x1="30" y1="180" x2="270" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="30" y1="180" x2="30" y2="30" stroke="#334155" stroke-width="1.5"/>
+    <text x="270" y="195" class="subtext">Feature X1</text>
+    <text x="25" y="20" class="subtext">Feature X2</text>
+
+    <!-- Correlated Scatter Points -->
+    <circle cx="65" cy="155" r="4.5" class="pt"/>
+    <circle cx="85" cy="140" r="4.5" class="pt"/>
+    <circle cx="110" cy="130" r="4.5" class="pt"/>
+    <circle cx="125" cy="115" r="4.5" class="pt"/>
+    <circle cx="150" cy="105" r="5" class="pt"/>
+    <circle cx="170" cy="90" r="4.5" class="pt"/>
+    <circle cx="195" cy="75" r="4.5" class="pt"/>
+    <circle cx="215" cy="65" r="4.5" class="pt"/>
+    <circle cx="240" cy="50" r="4.5" class="pt"/>
+    <!-- Noise points -->
+    <circle cx="140" cy="125" r="4.5" class="pt"/>
+    <circle cx="165" cy="80" r="4.5" class="pt"/>
+    <circle cx="180" cy="100" r="4.5" class="pt"/>
+
+    <!-- PC1 Vector (Direction of Max Spread) -->
+    <line x1="60" y1="165" x2="250" y2="45" class="pc1"/>
+    <text x="255" y="42" class="label" fill="#10b981" font-weight="700">PC 1 (λ1 ≈ 88%)</text>
+
+    <!-- PC2 Vector (Orthogonal) -->
+    <line x1="125" y1="70" x2="175" y2="140" class="pc2"/>
+    <text x="180" y="155" class="label" fill="#f43f5e" font-weight="700">PC 2 (λ2 ≈ 12%)</text>
+  </g>
+
+  <!-- Right: Mathematical Insight Card -->
+  <g transform="translate(410, 95)">
+    <rect x="0" y="0" width="340" height="175" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="25" y="30" class="label" fill="#38bdf8" font-weight="700" font-size="14px">Mathematische Verbindung:</text>
+
+    <text x="25" y="60" class="label" font-size="12px">1. <tspan font-weight="700">Kovarianzmatrix Σ:</tspan> Misst paarweise Streuung</text>
+    <text x="25" y="80" class="subtext">   Σ = 1/(N-1) · (X - μ)ᵀ(X - μ)</text>
+
+    <text x="25" y="110" class="label" font-size="12px">2. <tspan font-weight="700" fill="#10b981">Eigenwertgleichung:</tspan> Σ · v = λ · v</text>
+    <text x="25" y="130" class="subtext">   • Eigenvektor v = Richtung der Hauptachse</text>
+    <text x="25" y="148" class="subtext">   • Eigenwert λ = Varianz entlang dieser Achse</text>
+    
+    <text x="25" y="170" class="subtext" fill="#cbd5e1">Projektion auf PC1 behält 88% der Datenvarianz bei!</text>
+  </g>
+</svg>

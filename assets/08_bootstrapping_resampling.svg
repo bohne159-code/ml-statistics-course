@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
+      .data-orig { fill: #0284c7; stroke: #38bdf8; stroke-width: 1.5; }
+      .data-boot { fill: #10b981; stroke: #6ee7b7; stroke-width: 1.5; }
+      .arrow { stroke: #38bdf8; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Bootstrapping, Bagging &amp; Varianzreduktion</text>
+  <text x="30" y="58" class="subtext">Ziehen mit Zurücklegen (with replacement) – Das Fundament von Random Forests &amp; Nicht-parametrischen CIs</text>
+
+  <!-- Left: Original Data N -->
+  <g transform="translate(50, 95)">
+    <rect x="0" y="0" width="180" height="175" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="90" y="28" class="label" fill="#38bdf8" font-weight="700" text-anchor="middle">Originaldatensatz (N=5)</text>
+    
+    <circle cx="50" cy="65" r="14" class="data-orig"/> <text x="50" y="70" class="label" fill="#fff" text-anchor="middle">1</text>
+    <circle cx="130" cy="65" r="14" class="data-orig"/> <text x="130" y="70" class="label" fill="#fff" text-anchor="middle">2</text>
+    <circle cx="90" cy="105" r="14" class="data-orig"/> <text x="90" y="110" class="label" fill="#fff" text-anchor="middle">3</text>
+    <circle cx="50" cy="145" r="14" class="data-orig"/> <text x="50" y="150" class="label" fill="#fff" text-anchor="middle">4</text>
+    <circle cx="130" cy="145" r="14" class="data-orig"/> <text x="130" y="150" class="label" fill="#fff" text-anchor="middle">5</text>
+  </g>
+
+  <!-- Arrows to Resamples -->
+  <path d="M 240 140 L 290 115" class="arrow"/>
+  <path d="M 240 180 L 290 180" class="arrow"/>
+  <path d="M 240 220 L 290 245" class="arrow"/>
+  <text x="265" y="105" class="subtext" text-anchor="middle">Ziehen mit</text>
+  <text x="265" y="120" class="subtext" text-anchor="middle">Zurücklegen</text>
+
+  <!-- Middle: Bootstrap Samples -->
+  <g transform="translate(300, 90)">
+    <!-- Sample 1 -->
+    <rect x="0" y="0" width="180" height="50" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="10" y="20" class="subtext" fill="#10b981">Sample 1: [1, 2, 2, 4, 5]</text>
+    <text x="10" y="38" class="subtext" fill="#94a3b8">➔ Modell 1 (Baum 1)</text>
+
+    <!-- Sample 2 -->
+    <rect x="0" y="65" width="180" height="50" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="10" y="85" class="subtext" fill="#10b981">Sample 2: [2, 3, 3, 3, 5]</text>
+    <text x="10" y="103" class="subtext" fill="#94a3b8">➔ Modell 2 (Baum 2)</text>
+
+    <!-- Sample B -->
+    <rect x="0" y="130" width="180" height="50" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="10" y="150" class="subtext" fill="#10b981">Sample B: [1, 1, 4, 4, 5]</text>
+    <text x="10" y="168" class="subtext" fill="#94a3b8">➔ Modell B (Baum B)</text>
+  </g>
+
+  <!-- Right: Ensemble Aggregation & Variance Formula -->
+  <g transform="translate(520, 95)">
+    <rect x="0" y="0" width="240" height="175" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="120" y="28" class="label" fill="#f8fafc" font-weight="700" text-anchor="middle">Aggregation (Bagging)</text>
+    
+    <rect x="15" y="45" width="210" height="45" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="120" y="66" class="label" fill="#38bdf8" font-size="11px" font-weight="700" text-anchor="middle">Var(Ens) = ρ·σ² + (1-ρ)/M · σ²</text>
+    <text x="120" y="82" class="subtext" text-anchor="middle">Mittelwert über M Modelle</text>
+
+    <text x="20" y="115" class="subtext" fill="#cbd5e1">✔ Varianz sinkt mit mehr Bäumen (M)</text>
+    <text x="20" y="135" class="subtext" fill="#cbd5e1">✔ Feature-Bagging senkt Korrelation (ρ)</text>
+    <text x="20" y="155" class="subtext" fill="#10b981">✔ Out-of-Bag (OOB) = ca. 36.8% Validierung</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
+      .curve-mle { fill: none; stroke: #10b981; stroke-width: 3; }
+      .curve-loss { fill: none; stroke: #f43f5e; stroke-width: 3; }
+      .peak { fill: #10b981; stroke: #ecfdf5; stroke-width: 2; }
+      .min-pt { fill: #f43f5e; stroke: #ffe4e6; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Maximum Likelihood (MLE) vs. Loss-Funktion Minimierung</text>
+  <text x="30" y="58" class="subtext">Warum Loss-Minimierung in neuronalen Netzen exakt identisch mit Log-Likelihood-Maximierung ist</text>
+
+  <!-- Left Chart: Log-Likelihood Function (Maximize) -->
+  <g transform="translate(60, 90)">
+    <text x="140" y="15" class="label" fill="#10b981" font-weight="700" text-anchor="middle">Log-Likelihood ln L(θ)</text>
+    <text x="140" y="32" class="subtext" text-anchor="middle">Wird maximiert (Peak gesucht)</text>
+    
+    <!-- Axes -->
+    <line x1="20" y1="180" x2="260" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="20" y1="180" x2="20" y2="40" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- Concave Curve -->
+    <path d="M 30 170 Q 70 140, 140 60 Q 210 140, 250 170" class="curve-mle"/>
+    <circle cx="140" cy="60" r="6" class="peak"/>
+    <line x1="140" y1="60" x2="140" y2="180" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="140" y="198" class="label" fill="#10b981" text-anchor="middle">θ_MLE (Optimum)</text>
+  </g>
+
+  <!-- Center Equal Sign / Inversion Arrow -->
+  <g transform="translate(370, 150)">
+    <rect x="-35" y="-30" width="70" height="60" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="0" y="-8" class="label" fill="#38bdf8" font-size="14px" font-weight="700" text-anchor="middle">Loss =</text>
+    <text x="0" y="12" class="label" fill="#38bdf8" font-size="14px" font-weight="700" text-anchor="middle">-ln L(θ)</text>
+    <text x="0" y="45" class="subtext" text-anchor="middle">Invertierung</text>
+  </g>
+
+  <!-- Right Chart: Negative Log-Likelihood / Loss (Minimize) -->
+  <g transform="translate(470, 90)">
+    <text x="140" y="15" class="label" fill="#f43f5e" font-weight="700" text-anchor="middle">Loss L(θ) = -ln L(θ)</text>
+    <text x="140" y="32" class="subtext" text-anchor="middle">Wird via Gradient Descent minimiert</text>
+    
+    <!-- Axes -->
+    <line x1="20" y1="180" x2="260" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="20" y1="180" x2="20" y2="40" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- Convex Curve -->
+    <path d="M 30 50 Q 70 80, 140 160 Q 210 80, 250 50" class="curve-loss"/>
+    <circle cx="140" cy="160" r="6" class="min-pt"/>
+    <line x1="140" y1="160" x2="140" y2="180" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="140" y="198" class="label" fill="#f43f5e" text-anchor="middle">θ_opt (MSE / BCE)</text>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; rx: 12px; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; fill: #f8fafc; font-weight: 700; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #64748b; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
+      .cm-tp { fill: #10b981; fill-opacity: 0.25; stroke: #10b981; stroke-width: 1.5; }
+      .cm-fp { fill: #f43f5e; fill-opacity: 0.25; stroke: #f43f5e; stroke-width: 1.5; }
+      .cm-fn { fill: #f59e0b; fill-opacity: 0.25; stroke: #f59e0b; stroke-width: 1.5; }
+      .cm-tn { fill: #0284c7; fill-opacity: 0.25; stroke: #0284c7; stroke-width: 1.5; }
+      .roc-curve { fill: none; stroke: #38bdf8; stroke-width: 3; }
+      .roc-area { fill: #38bdf8; fill-opacity: 0.2; }
+      .roc-diag { stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    </style>
+  </defs>
+  <rect width="800" height="320" class="bg"/>
+  <text x="30" y="38" class="title">Statistische ML-Evaluation: Confusion Matrix &amp; ROC-AUC</text>
+  <text x="30" y="58" class="subtext">Modellgüte jenseits von naiver Accuracy (insbesondere bei Imbalanced Data)</text>
+
+  <!-- Left: Confusion Matrix Grid -->
+  <g transform="translate(45, 95)">
+    <text x="140" y="-12" class="label" fill="#94a3b8" font-size="11px" text-anchor="middle">Vorhersage (Predicted)</text>
+    <text x="65" y="8" class="subtext" text-anchor="middle">Positiv (1)</text>
+    <text x="175" y="8" class="subtext" text-anchor="middle">Negativ (0)</text>
+
+    <!-- Row Labels -->
+    <text x="-12" y="50" class="subtext" text-anchor="middle" transform="rotate(-90, -12, 50)">Tatsächlich</text>
+
+    <!-- 2x2 Matrix -->
+    <rect x="10" y="15" width="110" height="65" rx="6" class="cm-tp"/>
+    <text x="65" y="45" class="label" fill="#10b981" font-weight="700" text-anchor="middle">TP (True Pos)</text>
+    <text x="65" y="65" class="subtext" text-anchor="middle">Richtig positiv</text>
+
+    <rect x="125" y="15" width="110" height="65" rx="6" class="cm-fn"/>
+    <text x="180" y="45" class="label" fill="#f59e0b" font-weight="700" text-anchor="middle">FN (False Neg)</text>
+    <text x="180" y="65" class="subtext" text-anchor="middle">Übersehen (Typ II)</text>
+
+    <rect x="10" y="85" width="110" height="65" rx="6" class="cm-fp"/>
+    <text x="65" y="115" class="label" fill="#f43f5e" font-weight="700" text-anchor="middle">FP (False Pos)</text>
+    <text x="65" y="135" class="subtext" text-anchor="middle">Fehlalarm (Typ I)</text>
+
+    <rect x="125" y="85" width="110" height="65" rx="6" class="cm-tn"/>
+    <text x="180" y="115" class="label" fill="#0284c7" font-weight="700" text-anchor="middle">TN (True Neg)</text>
+    <text x="180" y="135" class="subtext" text-anchor="middle">Richtig negativ</text>
+  </g>
+
+  <!-- Right: ROC Curve & AUC -->
+  <g transform="translate(420, 85)">
+    <text x="140" y="12" class="label" fill="#38bdf8" font-weight="700" text-anchor="middle">ROC-Kurve (AUC = 0.92)</text>
+    
+    <!-- Axes -->
+    <line x1="40" y1="180" x2="260" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="40" y1="180" x2="40" y2="20" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- Diagonal Random Guess Line -->
+    <line x1="40" y1="180" x2="260" y2="20" class="roc-diag"/>
+    <text x="210" y="90" class="subtext">Zufall (AUC=0.5)</text>
+
+    <!-- ROC Curve with Area Under Curve -->
+    <path d="M 40 180 Q 50 50, 110 35 Q 180 25, 260 20 L 260 180 Z" class="roc-area"/>
+    <path d="M 40 180 Q 50 50, 110 35 Q 180 25, 260 20" class="roc-curve"/>
+
+    <!-- Labels -->
+    <text x="150" y="200" class="subtext" text-anchor="middle">FPR (False Positive Rate = 1 - Spec)</text>
+    <text x="15" y="100" class="subtext" text-anchor="middle" transform="rotate(-90, 15, 100)">TPR (Recall)</text>
+    
+    <!-- AUC Annotation -->
+    <rect x="100" y="100" width="105" height="40" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="152" y="118" class="label" fill="#38bdf8" font-weight="700" text-anchor="middle">AUC = 92%</text>
+    <text x="152" y="132" class="subtext" text-anchor="middle">P(Score+ &gt; Score-)</text>
+  </g>
+</svg>
